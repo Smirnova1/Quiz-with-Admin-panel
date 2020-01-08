@@ -1,0 +1,12 @@
+@extends('layouts.app')
+@section('content')
+    <div class="px-5">
+        <ul class="list-unstyled">
+            <li><a class="custom-link" href="{{action('Admin\CategoryController@index')}}">Categories</a></li>
+            <li><a class="custom-link" href="{{action('Admin\TopicController@index')}}">Topics</a></li>
+            <li><a class="custom-link" href={{action('Admin\QuestionController@index')}}>Questions</a></li>
+            <li><a class="custom-link" href={{action('Admin\OptionController@index')}}>Options</a></li>
+        </ul>
+
+    </div>
+@endsection

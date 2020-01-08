@@ -1,0 +1,57 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+body {
+  background: linear-gradient(#bbb, transparent 1px), linear-gradient(90deg, #bbb, transparent 1px);
+  background-size: 15px 15px;
+  background-position: center center;
+}
+
+.sticker {
+  background-color: #f4e99c;
+  box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.2);
+  border: none;
+  overflow: hidden;
+  transform: rotate(-7deg);
+}
+
+.sticker-content {
+  transform: rotate(7deg);
+}
+
+.paperclip {
+  transform: rotate(15deg);
+  position: absolute;
+  z-index: 1;
+  margin-left: -30px;
+  color: #636b6f;
+}
+
+.index-text {
+  font-size: 70px;
+  color: rgb(44, 105, 117);
+  margin-top: 100px;
+  font-weight: bold;
+}
+
+.custom-link {
+  color: rgb(44, 105, 117) !important;
+  text-decoration: none;
+}
+
+.custom-link:hover {
+  color: rgb(44, 105, 117);
+  text-decoration: none;
+  text-shadow: 0px 0px 6px rgba(44, 105, 117, 0.7);
+}
+
+.help-block {
+  color: red;
+}
+
