@@ -2,6 +2,21 @@
 
 The Quiz is realized on Laravel 6 and MySQL.
 
+## DEMO
+
+[http://simple-quizzes2.herokuapp.com/](http://simple-quizzes2.herokuapp.com/)
+
+####Admin
+email:admin@example.com
+
+password:admin
+
+####User
+email:user@example.com
+
+password:user
+
+
 ## Official Documentation
 Documentation for the framework can be found on the [Laravel documentation](https://laravel.com/)
 
