@@ -15,7 +15,6 @@
     @endforeach
 @endforeach
 
-
 <div class="form-group text-right">
     <input class="btn btn-outline-secondary btn-lg" type="submit" value="Result">
 </div>

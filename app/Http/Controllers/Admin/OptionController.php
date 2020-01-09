@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Helpers\OptionHelper;
 use App\Http\Requests\OptionStore;
 use App\Http\Requests\OptionRequest;
 use App\Models\Option;
@@ -35,6 +36,10 @@ class OptionController extends Controller
 
     public function update(OptionRequest $request, Option $option)
     {
+        if (OptionHelper::checkRadioOption($request->question_id, $request->is_correct)) {
+            return back()->with('error', 'This type of question can contain only one correct answer!');
+        }
+
         $option->update($request->all());
 
         return redirect('admin/options')->with('success', 'Option updated!');
