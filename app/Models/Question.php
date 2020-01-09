@@ -25,11 +25,6 @@ class Question extends Model
         return $this->hasMany(Option::class);
     }
 
-    public function getCorrectOptionsCol()
-    {
-        return $this->options()->where('is_correct', true);
-    }
-
     public function getCorrectOptions()
     {
         return $this->options()->where('is_correct', true)->pluck('text')->join(', ');

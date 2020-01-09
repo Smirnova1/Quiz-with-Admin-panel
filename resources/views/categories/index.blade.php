@@ -7,7 +7,8 @@
         </a>
         <ul class="list-unstyled">
             @foreach($categories as $category)
-                <li><a class="custom-link" href="{{action('CategoryController@show', $category->id)}}">{{$category->name}}</a></li>
+                <li><a class="custom-link"
+                       href="{{action('CategoryController@show', $category->id)}}">{{$category->name}}</a></li>
             @endforeach
         </ul>
     </div>

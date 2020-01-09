@@ -20,8 +20,8 @@ Route::get('/topics', 'TopicController@index');
 Route::get('/topics/{topic}', 'TopicController@show');
 Route::post('/results', 'ResultController@store');
 Route::get('/results/{result}', 'ResultController@show');
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function()
-{
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/', 'Admin\IndexController@index');
     Route::resource('categories', 'Admin\CategoryController');
     Route::resource('topics', 'Admin\TopicController');

@@ -9,11 +9,13 @@
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             Edit
         </a>
-        <form method="POST" action="{{action('Admin\CategoryController@destroy', $category->id)}}" accept-charset="UTF-8" style="display:inline">
+        <form method="POST" action="{{action('Admin\CategoryController@destroy', $category->id)}}"
+              accept-charset="UTF-8" style="display:inline">
             {{ method_field('DELETE') }}
             {{ csrf_field() }}
             <button type="submit" class="btn custom-link" onclick="return confirm(&quot;Confirm delete?&quot;)">
-                <i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+            </button>
         </form>
         <div>{{$category->name}}</div>
         <div>Topics:</div>

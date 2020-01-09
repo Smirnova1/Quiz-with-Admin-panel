@@ -10,9 +10,10 @@
         <div>Select topic:</div>
         <ul class="list-unstyled">
             @foreach($category->topics as $topic)
-                <li><a class="custom-link" href="{{action('TopicController@show', $topic->id)}}">{{$topic->name}}</a></li>
+                <li><a class="custom-link"
+                       href="{{action('TopicController@show', $topic->id)}}">{{$topic->name}}</a></li>
             @endforeach
-                <li><a class="custom-link" href="{{action('TopicController@index')}}">All topics</a></li>
+            <li><a class="custom-link" href="{{action('TopicController@index')}}">All topics</a></li>
         </ul>
 
     </div>

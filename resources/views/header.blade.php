@@ -13,8 +13,8 @@
             <ul class="navbar-nav mr-auto">
                 @if(Auth::user() && Auth::user()->isAdmin())
                     <li class="nav-item">
-                        <a class="nav-link custom-link" href="{{action(('Admin\IndexController@index'))}}">Admin
-                            panel</a>
+                        <a class="nav-link custom-link"
+                           href="{{action(('Admin\IndexController@index'))}}">Admin panel</a>
                     </li>
                 @elseif(Auth::user())
                     <li class="nav-item">

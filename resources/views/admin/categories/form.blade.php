@@ -12,7 +12,7 @@
                 <input name="topic_id[]" value="{{$topic->id}}"
                        type="checkbox" id="topic{{$topic->id}}"
                        @foreach($category->topics()->get() as $item)
-                           @if($item->name == $topic->name) checked @endif
+                       @if($item->name == $topic->name) checked @endif
                         @endforeach>
                 <label for="topic{{$topic->id}}" class="control-label">{{$topic->name}}</label>
             </div>

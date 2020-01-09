@@ -8,7 +8,8 @@
         <ul class="list-unstyled">
             <li><a class="custom-link" href="{{action('Admin\TopicController@create')}}">ADD TOPIC</a></li>
             @foreach($topics as $topic)
-                <li><a class="custom-link" href="{{action('Admin\TopicController@show', $topic->id)}}">{{$topic->name}}</a></li>
+                <li><a class="custom-link"
+                       href="{{action('Admin\TopicController@show', $topic->id)}}">{{$topic->name}}</a></li>
             @endforeach
         </ul>
 

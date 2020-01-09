@@ -8,7 +8,8 @@
         <ul class="list-unstyled">
             <li><a class="custom-link" href="{{action('Admin\CategoryController@create')}}">ADD CATEGORY</a></li>
             @foreach($categories as $category)
-                <li><a class="custom-link" href="{{action('Admin\CategoryController@show', $category->id)}}">{{$category->name}}</a></li>
+                <li><a class="custom-link"
+                       href="{{action('Admin\CategoryController@show', $category->id)}}">{{$category->name}}</a></li>
             @endforeach
         </ul>
 

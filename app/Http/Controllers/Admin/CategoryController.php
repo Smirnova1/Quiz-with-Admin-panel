@@ -22,7 +22,6 @@ class CategoryController extends Controller
 
     public function store(CategoryStore $request, Category $category)
     {
-        dd($request);
         $category::create($request->all());
 
         return redirect('admin/categories')->with('success', 'Category added!');
