@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="px-5">
+    <div class="px-5 content">
         <table class="table table-borderless">
             <thead>
             <tr>
@@ -18,7 +18,7 @@
             </tr>
             </tbody>
         </table>
-        <table class="table table-borderless">
+        <table class="table table-borderless table-result">
             <thead>
             <tr>
                 <th scope="col">#</th>
@@ -29,7 +29,7 @@
             </thead>
             <tbody>
             @foreach($result->userOptions()->get() as $item)
-                <tr>
+                <tr class="@if($item->user_option == $item->correct_option) option-right @else option-wrong @endif">
                     <th scope="row">{{$loop->iteration}}</th>
                     <td>{{$item->question}}</td>
                     <td>{{$item->user_option }}</td>

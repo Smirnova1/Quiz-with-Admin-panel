@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="px-5">
+    <div class="px-5 content">
         <a class="custom-link" href="{{action('Admin\QuestionController@index')}}">
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
             back
@@ -13,23 +13,24 @@
               accept-charset="UTF-8" style="display:inline">
             {{ method_field('DELETE') }}
             {{ csrf_field() }}
-            <button type="submit" class="btn custom-link" onclick="return confirm(&quot;Confirm delete?&quot;)">
+            <button type="submit" class="btn custom-link content" onclick="return confirm(&quot;Confirm delete?&quot;)">
                 <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
             </button>
         </form>
-        <div>{{$question->text}}</div>
-        <div>Type: {{$question->type}}</div>
-        <div>Options:</div>
+        <div class="title-text">{{$question->text}}</div>
+        <div class="title-text">Type:</div>
+        <div>{{$question->type}}</div>
+        <div class="title-text">Options:</div>
         <ul class="list-unstyled">
             @foreach($question->options as $option)
                 <li>{{$option->text}}</li>
             @endforeach
         </ul>
-        <div>Correct options:</div>
+        <div class="title-text">Correct options:</div>
         <ul class="list-unstyled">
             <li>{{$question->getCorrectOptions()}}</li>
         </ul>
-        <div>Topics:</div>
+        <div class="title-text">Topics:</div>
         <ul class="list-unstyled">
             @foreach($question->topics as $topic)
                 <li>{{$topic->name}}</li>

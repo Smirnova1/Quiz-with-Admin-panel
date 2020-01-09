@@ -1,6 +1,6 @@
 <input name="topic_id" hidden value="{{$topic->id}}">
 @foreach($topic->questions as $question )
-    <div>{{$question->text}}</div>
+    <div class="title-text">{{$question->text}}</div>
     @foreach($question->options as $option)
         <div class="form-group">
             <input name="questions[{{$question->id}}][]" id="option{{$option->id}}[]"

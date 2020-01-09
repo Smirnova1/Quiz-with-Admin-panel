@@ -21,7 +21,8 @@
             <div>
                 <input name="question_id" value="{{$question->id}}"
                        type="radio" id="question{{$question->id}}"
-                       @if(!empty($option->question->text) && $option->question->text == $question->text) checked @endif>
+                       @if(!empty($option->question->text) && $option->question->text == $question->text)
+                       checked @endif>
                 <label for="question{{$question->id}}" class="control-label">{{$question->text}}</label>
             </div>
         @endforeach

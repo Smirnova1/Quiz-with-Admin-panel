@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="px-5">
+    <div class="px-5 content">
         <a class="custom-link" href="{{action('Admin\TopicController@index')}}">
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
             back
@@ -13,12 +13,12 @@
               style="display:inline">
             {{ method_field('DELETE') }}
             {{ csrf_field() }}
-            <button type="submit" class="btn custom-link" onclick="return confirm(&quot;Confirm delete?&quot;)">
+            <button type="submit" class="btn custom-link content" onclick="return confirm(&quot;Confirm delete?&quot;)">
                 <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
             </button>
         </form>
-        <div>{{$topic->name}}</div>
-        <div>Categories:</div>
+        <div class="title-text">{{$topic->name}}</div>
+        <div class="title-text">Categories:</div>
         <ul class="list-unstyled">
             @foreach($topic->categories as $category)
                 <li>{{$category->name}}</li>

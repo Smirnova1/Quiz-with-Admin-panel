@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="px-5">
+    <div class="px-5 content">
         <a class="custom-link" href="{{action('HomeController@index')}}">
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
             back

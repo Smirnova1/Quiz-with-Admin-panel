@@ -6,9 +6,22 @@
 @import '~bootstrap/scss/bootstrap';
 
 body {
+  font-family: 'Indie Flower', cursive;
   background: linear-gradient(#bbb, transparent 1px), linear-gradient(90deg, #bbb, transparent 1px);
   background-size: 15px 15px;
   background-position: center center;
+}
+
+.navbar .container {
+  font-size: 30px;
+}
+
+.navbar-brand {
+  font-size: 30px;
+}
+
+.content {
+  font-size: 35px;
 }
 
 .sticker {
@@ -32,9 +45,13 @@ body {
 }
 
 .index-text {
-  font-size: 70px;
+  font-size: 80px;
   color: rgb(44, 105, 117);
   margin-top: 100px;
+  font-weight: bold;
+}
+
+.title-text {
   font-weight: bold;
 }
 
@@ -53,3 +70,14 @@ body {
   color: red;
 }
 
+.table-result {
+  font-size: 20px;
+}
+
+.option-right {
+  background-color: rgba(0, 234, 0, 0.61);
+}
+
+.option-wrong {
+  background-color: rgba(249, 0, 0, 0.61);
+}
