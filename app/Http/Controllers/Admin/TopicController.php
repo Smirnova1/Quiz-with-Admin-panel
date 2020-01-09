@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TopicStore;
 use App\Models\Topic;
-use Illuminate\Http\Request;
 
 class TopicController extends Controller
 {
@@ -20,12 +20,8 @@ class TopicController extends Controller
         return view('admin/topics/create');
     }
 
-    public function store(Request $request, Topic $topic)
+    public function store(TopicStore $request, Topic $topic)
     {
-        $this->validate($request, [
-            'name' => 'required|max:90',
-        ]);
-
         $topic::create($request->all());
 
         return redirect('admin/topics')->with('success', 'Topic added!');
@@ -36,11 +32,8 @@ class TopicController extends Controller
         return view('admin/topics/edit', compact('topic'));
     }
 
-    public function update(Request $request, Topic $topic)
+    public function update(TopicStore $request, Topic $topic)
     {
-        $this->validate($request, [
-            'name' => 'required|max:90',
-        ]);
         $topic->categories()->sync($request->category_id);
         $topic->questions()->sync($request->question_id);
         $topic->update($request->all());

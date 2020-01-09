@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryStore;
 use App\Models\Category;
-use Illuminate\Http\Request;
-
 
 class CategoryController extends Controller
 {
@@ -21,12 +20,9 @@ class CategoryController extends Controller
         return view('admin/categories/create');
     }
 
-    public function store(Request $request, Category $category)
+    public function store(CategoryStore $request, Category $category)
     {
-        $this->validate($request, [
-            'name' => 'required|max:90',
-        ]);
-
+        dd($request);
         $category::create($request->all());
 
         return redirect('admin/categories')->with('success', 'Category added!');
@@ -37,11 +33,8 @@ class CategoryController extends Controller
         return view('admin/categories/edit', compact('category'));
     }
 
-    public function update(Request $request, Category $category)
+    public function update(CategoryStore $request, Category $category)
     {
-        $this->validate($request, [
-            'name' => 'required|max:90',
-        ]);
         $category->topics()->sync($request->topic_id);
         $category->update($request->all());
 

@@ -8,8 +8,9 @@
 <div class="form-group">
     <div>Type:</div>
     <select id="questionType">
+        <option selected hidden disabled>Type of question</option>
         @foreach(\App\Models\Question::TYPES as $type)
-            <option value="{{ isset($question->type) ? $question->type : ''}}">{{$type}}</option>
+            <option value="{{$type}}">{{$type}}</option>
         @endforeach
     </select>
     <input name="type" id="typeValue" hidden>

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\OptionStore;
+use App\Http\Requests\OptionRequest;
 use App\Models\Option;
-use Illuminate\Http\Request;
 
 class OptionController extends Controller
 {
@@ -20,12 +21,8 @@ class OptionController extends Controller
         return view('admin/options/create');
     }
 
-    public function store(Request $request, Option $option)
+    public function store(OptionStore $request, Option $option)
     {
-        $this->validate($request, [
-            'text' => 'required|max:500',
-        ]);
-
         $option::create($request->all());
 
         return redirect('admin/options')->with('success', 'Option added!');
@@ -36,13 +33,8 @@ class OptionController extends Controller
         return view('admin/options/edit', compact('option'));
     }
 
-    public function update(Request $request, Option $option)
+    public function update(OptionRequest $request, Option $option)
     {
-        $this->validate($request, [
-            'text' => 'required|max:500',
-            'is_correct' => 'required',
-            'question_id' => 'required'
-        ]);
         $option->update($request->all());
 
         return redirect('admin/options')->with('success', 'Option updated!');
