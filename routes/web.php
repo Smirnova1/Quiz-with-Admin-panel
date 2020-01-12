@@ -26,5 +26,4 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::resource('categories', 'Admin\CategoryController');
     Route::resource('topics', 'Admin\TopicController');
     Route::resource('questions', 'Admin\QuestionController');
-    Route::resource('options', 'Admin\OptionController');
 });

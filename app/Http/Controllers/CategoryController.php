@@ -12,9 +12,9 @@ class CategoryController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(Category $category)
+    public function index()
     {
-        $categories = $category::all();
+        $categories = Category::paginate(5);
 
         return view('categories.index', compact('categories'));
     }

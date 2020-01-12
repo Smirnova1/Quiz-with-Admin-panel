@@ -12,9 +12,9 @@ class TopicController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(Topic $topic)
+    public function index()
     {
-        $topics = $topic::all();
+        $topics = Topic::paginate(5);
 
         return view('topics.index', compact('topics'));
     }

@@ -1,10 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <div class="px-5 content">
-        <a class="custom-link" href="{{action('Admin\IndexController@index')}}">
-            <i class="fa fa-arrow-left" aria-hidden="true"></i>
-            back
-        </a>
+
+        @include('back')
+
         <ul class="list-unstyled">
             <li><a class="custom-link title-text"
                    href="{{action('Admin\QuestionController@create')}}">ADD QUESTION</a></li>
@@ -15,6 +14,6 @@
                 </li>
             @endforeach
         </ul>
-
+        {{ $questions->links() }}
     </div>
 @endsection

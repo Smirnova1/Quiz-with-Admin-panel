@@ -1,10 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <div class="px-5 content">
-        <a class="custom-link" href="{{action('Admin\TopicController@index')}}">
-            <i class="fa fa-arrow-left" aria-hidden="true"></i>
-            back
-        </a>
+
+        @include('back')
+
         <a class="custom-link" href="{{action('Admin\TopicController@edit', $topic->id)}}">
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             Edit

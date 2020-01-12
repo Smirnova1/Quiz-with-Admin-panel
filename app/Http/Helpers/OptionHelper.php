@@ -6,13 +6,14 @@ use App\Models\Question;
 
 class OptionHelper
 {
-    public static function checkRadioOption($id, $value)
+    public static function checkRadioOption($array)
     {
-        $question = Question::find($id);
-        if ($question->type == 'radio' && $question->hasCorrectAnswer() && $value) {
-            return true;
+        $i = 0;
+        foreach ($array as $key => $value) {
+            if ($value) {
+                $i++;
+            }
         }
-
-        return false;
+        return boolval($i != 1);
     }
 }

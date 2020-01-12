@@ -13,4 +13,4 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
-    .scripts('resources/js/question-type.js', 'public/js/question-type.js');
+    .scripts('resources/js/addFields.js', 'public/js/all.js');

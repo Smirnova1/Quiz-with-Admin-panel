@@ -1,10 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <div class="px-5 content">
-        <a class="custom-link" href="{{action('Admin\QuestionController@index')}}">
-            <i class="fa fa-arrow-left" aria-hidden="true"></i>
-            back
-        </a>
+
+        @include('back')
+
         <div class="title-text">Edit Question #{{ $question->id }}</div>
 
         <form method="POST" action="{{action('Admin\QuestionController@update', $question->id)}}"

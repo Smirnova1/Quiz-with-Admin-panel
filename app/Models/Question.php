@@ -27,15 +27,6 @@ class Question extends Model
 
     public function getCorrectOptions()
     {
-        return $this->options()->where('is_correct', true)->pluck('text')->join(', ');
-    }
-
-    public function hasCorrectAnswer()
-    {
-        if ($this->getCorrectOptions()) {
-            return true;
-        }
-
-        return false;
+        return $this->options()->where('is_correct', true)->pluck('text');
     }
 }

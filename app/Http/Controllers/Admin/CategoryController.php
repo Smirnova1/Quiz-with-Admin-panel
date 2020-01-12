@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\CategoryStore;
 use App\Models\Category;
 
 class CategoryController extends Controller
 {
-    public function index(Category $category)
+    public function index()
     {
-        $categories = $category::all();
+        $categories = Category::paginate(5);
 
         return view('admin/categories/index', compact('categories'));
     }
@@ -32,7 +33,7 @@ class CategoryController extends Controller
         return view('admin/categories/edit', compact('category'));
     }
 
-    public function update(CategoryStore $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
         $category->topics()->sync($request->topic_id);
         $category->update($request->all());

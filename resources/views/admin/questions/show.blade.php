@@ -1,10 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <div class="px-5 content">
-        <a class="custom-link" href="{{action('Admin\QuestionController@index')}}">
-            <i class="fa fa-arrow-left" aria-hidden="true"></i>
-            back
-        </a>
+
+        @include('back')
+
         <a class="custom-link" href="{{action('Admin\QuestionController@edit', $question->id)}}">
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             Edit
@@ -28,7 +27,9 @@
         </ul>
         <div class="title-text">Correct options:</div>
         <ul class="list-unstyled">
-            <li>{{$question->getCorrectOptions()}}</li>
+            @foreach($question->getCorrectOptions() as $key => $value)
+                <li>{{$value}}</li>
+            @endforeach
         </ul>
         <div class="title-text">Topics:</div>
         <ul class="list-unstyled">

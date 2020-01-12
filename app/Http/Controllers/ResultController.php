@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ResultStore;
 use App\Models\Question;
 use App\Models\Result;
 use App\Models\UserOption;
@@ -15,7 +16,7 @@ class ResultController extends Controller
         $this->middleware('auth');
     }
 
-    public function store(Request $request)
+    public function store(ResultStore $request)
     {
         $result = Result::create([
             'user_id' => Auth::user()->id,
@@ -28,7 +29,7 @@ class ResultController extends Controller
                 'result_id' => $result->id,
                 'question' => $question->text,
                 'user_option' => implode(', ', $value),
-                'correct_option' => $question->getCorrectOptions()
+                'correct_option' => $question->getCorrectOptions()->join(', ')
             ]);
         }
 

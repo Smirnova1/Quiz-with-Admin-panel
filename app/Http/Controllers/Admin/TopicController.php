@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TopicRequest;
 use App\Http\Requests\TopicStore;
 use App\Models\Topic;
 
 class TopicController extends Controller
 {
-    public function index(Topic $topic)
+    public function index()
     {
-        $topics = $topic::all();
+        $topics = Topic::paginate(5);
 
         return view('admin/topics/index', compact('topics'));
     }
@@ -32,7 +33,7 @@ class TopicController extends Controller
         return view('admin/topics/edit', compact('topic'));
     }
 
-    public function update(TopicStore $request, Topic $topic)
+    public function update(TopicRequest $request, Topic $topic)
     {
         $topic->categories()->sync($request->category_id);
         $topic->questions()->sync($request->question_id);
