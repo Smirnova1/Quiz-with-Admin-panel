@@ -2,10 +2,6 @@
 
 The Quiz is realized on Laravel 6 and MySQL.
 
-## DEMO
-
-[http://simple-quizzes2.herokuapp.com/](http://simple-quizzes2.herokuapp.com/)
-
 #### Admin
 email:admin@example.com
 
