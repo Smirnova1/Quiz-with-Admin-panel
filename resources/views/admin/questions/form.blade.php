@@ -15,7 +15,6 @@
             @endforeach
         </select>
         <input name="type" id="typeValue" hidden>
-        <button type="button" id="resetSelect" hidden>reset</button>
     </div>
     {!! $errors->first('options', '<p class="help-block">:message</p>') !!}
 
@@ -24,25 +23,34 @@
         <button type="button" hidden id="removeOptions">Remove option</button>
         <div class="optionFields"></div>
     </div>
+    <button type="button" id="resetSelect" hidden>reset</button>
 @endif
 
 @if($formMode === 'edit')
     <div class="form-group">
         <div>Type: {{$question->type}}</div>
-        <input name="type" value="{{$question->type}}" hidden>
+        <input name="type" value="{{$question->type}}" hidden id="typeValueEdit">
+    </div>
+    <div class="form-group">
+        <button type="button" hidden id="addOptionsEdit">Add option</button>
+        <button type="button" hidden id="removeOptionsEdit">Remove option</button>
     </div>
     @foreach($question->options as $option)
-        <input class="form-control" type="text" name="options[]" required value="{{$option->text}}">
-        <input name="option_id[]" hidden value="{{$option->id}}">
-        @if($question->type == 'text')
-            <input name="is_correct" hidden value="1">
-        @elseif($question->type == 'radio' || $question->type == 'checkbox')
-            <input type="hidden" name="is_correct[{{$loop->index}}]" value="0">
-            <input id="is_correct-{{$option->id}}" type="checkbox" name="is_correct[{{$loop->index}}]" value="1"
-                   @if($option->is_correct) checked @endif>
-            <label for="is_correct-{{$option->id}}" class="label">correct option</label>
-        @endif
+        <div class="field">
+            <input class="form-control" type="text" name="options[]" required value="{{$option->text}}">
+            <input name="option_id[]" hidden value="{{$option->id}}" class="optionId">
+            @if($question->type == 'text')
+                <input name="is_correct" hidden value="1">
+            @elseif($question->type == 'radio' || $question->type == 'checkbox')
+
+                <input type="hidden" name="is_correct[{{$loop->index}}]" value="0">
+                <input id="is_correct-{{$option->id}}" type="checkbox" name="is_correct[{{$loop->index}}]" value="1"
+                       @if($option->is_correct) checked @endif>
+                <label for="is_correct-{{$option->id}}" class="label">correct option</label>
+            @endif
+        </div>
     @endforeach
+    <div class="optionFields"></div>
 @endif
 
 <div class="form-group text-right">

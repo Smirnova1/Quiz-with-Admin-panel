@@ -14,7 +14,7 @@ class TopicController extends Controller
 
     public function index()
     {
-        $topics = Topic::paginate(5);
+        $topics = Topic::orderByDesc('created_at')->paginate(5);
 
         return view('topics.index', compact('topics'));
     }

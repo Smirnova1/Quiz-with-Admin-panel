@@ -13,7 +13,7 @@ class QuestionController extends Controller
 {
     public function index()
     {
-        $questions = Question::paginate(5);
+        $questions = Question::orderByDesc('created_at')->paginate(5);
 
         return view('admin/questions/index', compact('questions'));
     }
@@ -25,6 +25,7 @@ class QuestionController extends Controller
 
     public function store(QuestionStore $request)
     {
+//        dd($request->all());
         if ($request->type == 'radio' && OptionHelper::checkRadioOption($request->input('is_correct'))) {
             return back()->with('error', 'This type of question can contain one correct answer!');
         }
@@ -50,17 +51,27 @@ class QuestionController extends Controller
         if ($request->type == 'radio' && OptionHelper::checkRadioOption($request->input('is_correct'))) {
             return back()->with('error', 'This type of question can contain one correct answer!');
         }
-        $question->update($request->all());
-
-        foreach ($request->input('options') as $key => $value) {
-            Option::where('id', $request->input('option_id')[$key])->update([
-                'question_id' => $question->id,
-                'text' => $value,
-                'is_correct' => $request->input('is_correct')[$key]
-            ]);
-
+        if ($request->input('optionsForRemove') && !empty($request->input('optionsForRemove'))) {
+            foreach ($request->input('optionsForRemove') as $key => $value) {
+                Option::where('id', $value)->delete();
+            }
         }
-
+        $question->update($request->all());
+        foreach ($request->input('option_id') as $key => $value) {
+            if (!$value) {
+                Option::create([
+                    'question_id' => $question->id,
+                    'text' => $request->input('options')[$key],
+                    'is_correct' => $request->input('is_correct')[$key]
+                ]);
+            } else {
+                Option::where('id', $value)->update([
+                    'question_id' => $question->id,
+                    'text' => $request->input('options')[$key],
+                    'is_correct' => $request->input('is_correct')[$key]
+                ]);
+            }
+        }
         return redirect('admin/questions')->with('success', 'Question updated!');
     }
 
